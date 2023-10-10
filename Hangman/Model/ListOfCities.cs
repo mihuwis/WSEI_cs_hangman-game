@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hangman.Data
+namespace Hangman.Model
 {
     internal class ListOfCities
     {
@@ -18,5 +18,7 @@ namespace Hangman.Data
             cities.Add("Kabul");
             cities.Add("London");
         }
+
+        public List<string> Cities { get => cities; }
     }
 }
