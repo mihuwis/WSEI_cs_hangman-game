@@ -1,4 +1,5 @@
-﻿using Hangman.Model;
+﻿using Hangman.Controler;
+using Hangman.Model;
 using System.Threading.Channels;
 
 namespace Hangman
@@ -7,13 +8,11 @@ namespace Hangman
     {
         static void Main(string[] args)
         {
+            CitiesGenerator generator = new CitiesGenerator();
+            LocalListCitiesDAO localList = new LocalListCitiesDAO();
 
-            LocalListCitiesDAO localListCitiesDAO = new LocalListCitiesDAO();
-            Console.WriteLine("Hello, World!");
-
-            List<string> list = localListCitiesDAO.GetAllCities();
-
-            list.ForEach(x => Console.WriteLine(x));
+            string capitolToGuess = generator.generateCity(localList.GetAllCities());
+            Console.WriteLine(capitolToGuess);
         }
     }
 }

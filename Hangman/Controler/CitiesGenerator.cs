@@ -8,5 +8,11 @@ namespace Hangman.Controler
 {
     internal class CitiesGenerator
     {
+        public string generateCity(List<string> listOfCities)
+        {
+            Random r = new Random();
+            int randomInt = r.Next(listOfCities.Count);
+            return listOfCities[randomInt];
+        }
     }
 }
