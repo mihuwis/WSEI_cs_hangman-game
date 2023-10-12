@@ -10,17 +10,14 @@ namespace Hangman.Controler
     internal class GameController
     {
         GameMessages gameMesages = new GameMessages();
-        InputValidator inputValidator = new InputValidator();
+        InputController inputController = new InputController();
 
         public void RunTheGame()
         {
             Console.WriteLine(gameMesages.WelcomeMsg);
             Console.WriteLine(gameMesages.EnterLetterMsg);
-            string letter;
-            do
-            {
-                letter = Console.ReadLine();
-            } while (inputValidator.ValidateInput(letter));
+            string letter = inputController.getInputValueFromUser();
+  
 
             Console.WriteLine("END !!");
             Console.WriteLine(letter);
