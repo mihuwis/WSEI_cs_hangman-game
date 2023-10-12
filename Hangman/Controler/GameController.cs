@@ -17,16 +17,33 @@ namespace Hangman.Controler
 
         public void RunTheGame()
         {
-            Console.WriteLine(gameMesages.WelcomeMsg);
-            string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
-            Console.WriteLine(capitolToGuess);
-            Console.WriteLine(gameMesages.EnterLetterMsg);
-            string letter = inputController.getInputValueFromUser();
-  
+            bool isGameFinished = false;
+            while (!isGameFinished)
+            {
+                Console.WriteLine(gameMesages.MenuMsg);
+                isGameFinished = inputController.getInputValueFromUser() == "s" ? false : true;
+                if(!isGameFinished )
+                {
+                    Console.WriteLine(gameMesages.WelcomeMsg);
+                    string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
+                    Console.WriteLine(capitolToGuess);
+                    Console.WriteLine(gameMesages.EnterLetterMsg);
+                    string letter = inputController.getInputValueFromUser();
+                    if (capitolToGuess.Contains(letter))
+                    {
+                        Console.WriteLine(gameMesages.CorrectLetterMsg);
+                    }
+                    else
+                    {
+                        Console.WriteLine(gameMesages.WrongLetterMsg);
+                    }
+                }
 
-            Console.WriteLine("END !!");
-            Console.WriteLine(letter);
-            Console.WriteLine(letter.Length);
+            }
+
+  
         }
+
+        
     }
 }
