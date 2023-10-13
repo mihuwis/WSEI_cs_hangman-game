@@ -8,7 +8,7 @@ namespace Hangman.View
 {
     internal class GameMessages
     {
-        private string welcomeMsg = "Welcome Player. Press any key to start the game!";
+        private string welcomeMsg = "\t Welcome Player!!\n Below this line you have hashed (###) name of capitol city.\n Please enter any letter to check if it is part of this name!\n Good Luck!!! ";
         private string enterLetterMsg = "Please enter just one letter";
         private string wrongLetterMsg = "UPS! Wrong letter!";
         private string correctLetterMsg = "Great! This is correct!";

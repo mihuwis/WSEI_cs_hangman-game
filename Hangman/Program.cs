@@ -10,7 +10,7 @@ namespace Hangman
         static void Main(string[] args)
         {
             GameController controller = new GameController();
-            controller.RunTheGame();
+            controller.MenuController();
 
 
 

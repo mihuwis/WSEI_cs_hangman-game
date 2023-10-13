@@ -15,29 +15,36 @@ namespace Hangman.Controler
         ListOfCities listOfCities = new();
         InputController inputController = new();
 
+        public void MenuController ()
+        {
+            Console.WriteLine(gameMesages.MenuMsg);
+            bool isGameStarted = inputController.getInputValueFromUser() == "s" ? true : false;
+            if (isGameStarted)
+            {
+                RunTheGame();
+            }
+        }
+
         public void RunTheGame()
         {
             bool isGameFinished = false;
             while (!isGameFinished)
             {
-                Console.WriteLine(gameMesages.MenuMsg);
-                isGameFinished = inputController.getInputValueFromUser() == "s" ? false : true;
-                if(!isGameFinished )
+                
+                Console.WriteLine(gameMesages.WelcomeMsg);
+                string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
+                Console.WriteLine(capitolToGuess);
+                Console.WriteLine(gameMesages.EnterLetterMsg);
+                string letter = inputController.getInputValueFromUser();
+                if (capitolToGuess.Contains(letter))
                 {
-                    Console.WriteLine(gameMesages.WelcomeMsg);
-                    string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
-                    Console.WriteLine(capitolToGuess);
-                    Console.WriteLine(gameMesages.EnterLetterMsg);
-                    string letter = inputController.getInputValueFromUser();
-                    if (capitolToGuess.Contains(letter))
-                    {
-                        Console.WriteLine(gameMesages.CorrectLetterMsg);
-                    }
-                    else
-                    {
-                        Console.WriteLine(gameMesages.WrongLetterMsg);
-                    }
+                    Console.WriteLine(gameMesages.CorrectLetterMsg);
                 }
+                else
+                {
+                    Console.WriteLine(gameMesages.WrongLetterMsg);
+                }
+             
 
             }
 
