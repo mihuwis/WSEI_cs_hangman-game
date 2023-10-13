@@ -14,6 +14,7 @@ namespace Hangman.Controler
         CitiesGenerator citiesGenerator = new();
         ListOfCities listOfCities = new();
         InputController inputController = new();
+        HashNameController hashNameController; 
 
         public void MenuController ()
         {
@@ -27,13 +28,20 @@ namespace Hangman.Controler
 
         public void RunTheGame()
         {
+            Console.WriteLine(gameMesages.WelcomeMsg);
+
             bool isGameFinished = false;
+
+            string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
+            Console.WriteLine(capitolToGuess);
+            hashNameController = new HashNameController(capitolToGuess);
+            Console.WriteLine(hashNameController.HashedName);
+
+
             while (!isGameFinished)
             {
-                
-                Console.WriteLine(gameMesages.WelcomeMsg);
-                string capitolToGuess = citiesGenerator.generateCity(listOfCities.Cities);
-                Console.WriteLine(capitolToGuess);
+
+                Console.WriteLine(hashNameController.HashedName);
                 Console.WriteLine(gameMesages.EnterLetterMsg);
                 string letter = inputController.getInputValueFromUser();
                 if (capitolToGuess.Contains(letter))
